@@ -17,18 +17,23 @@ import platform
 # I think this will print "hello! Let's get started" by calling the print function.
 print("hello! Let's get started")  # it printed "hello! Let's get started"
 
+# This is a list
 some_words = ["what", "does", "this", "line", "do", "?"]
 
+# I think this will print every string that is within the list
 for word in some_words:
-    print(word)
+    print(word) # It prints every word in the list
 
+# Honestly no clue what will happen here, I think it migh print the strings within the list by calling the print function
 for x in some_words:
-    print(x)
+    print(x) # It prints every word in the list
 
-print(some_words)
+# I think this will print the list, like "['what', 'does', 'this', 'line' 'do', '?']"
+print(some_words) # It prints the list as I thought
 
+# If the list has more than 3 words in it, it will print "some_words contains more than 3 words" by calling the print function
 if len(some_words) > 3:
-    print("some_words contains more than 3 words")
+    print("some_words contains more than 3 words") # It does what I thought it would
 
 
 def usefulFunction():
@@ -37,7 +42,8 @@ def usefulFunction():
     what the line below does:
     https://docs.python.org/3/library/platform.html#platform.uname
     """
-    print(platform.uname())
+    # I think it will return a tuple containing my laptop's system, node, release, version, machine and processor by calling the print function
+    print(platform.uname()) # It did what I expected, however didn't print the processor part
 
 
 usefulFunction()
