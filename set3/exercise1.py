@@ -17,7 +17,18 @@ def loop_ranger(start, stop=None, step=1):
     Look up for how range() works in the python docs. You could  answer this
     with just the range function, but we'd like you to do it the long way.
     """
-    return None
+    numbers = []
+    current_num = start
+    while current_num < stop:
+        numbers.append(current_num)
+        current_num += step
+    return numbers
+
+    start = 3
+    stop = 10
+    step = 2
+    result = loop_ranger(start, stop, step)
+    print(result)
 
 
 def two_step_ranger(start, stop):
@@ -28,7 +39,18 @@ def two_step_ranger(start, stop):
 
     You can either reuse loop_ranger, or the range function that in the standard library
     """
-    return None
+    numbers = []
+    first_num = start
+    while first_num < stop:
+        numbers.append(first_num)
+        first_num += 2
+    return numbers
+
+    start = 3
+    stop = 10
+    result = two_step_ranger(start, stop)
+    print(result)
+
 
 
 def stubborn_asker(low, high):
@@ -39,7 +61,17 @@ def stubborn_asker(low, high):
 
     Look up the docs for a function called "input"
     """
-    return None
+    while True:
+        number = int(input("Pick a number between 1 and 100:".format(low, high)))
+        if low <= number <= high:
+            return number
+        else:
+            print("That's not between 1 and 100 silly! 😆")
+
+    low = 1
+    high = 100
+    result = stubborn_asker(low, high)
+    print("Your chosen number is ..." + result)
 
 
 def not_number_rejector(message):
@@ -49,7 +81,16 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    return None
+    while True:
+        response = input("Type in your favorite number!")
+        try:
+            response = int(response)
+            return response
+        except ValueError:
+            print("Hey! That's not a number!🤬")
+
+    result = not_number_rejector(message)
+    print("Your favorite number is ..." + result + " That's so fun!")
 
 
 def super_asker(low, high):
@@ -58,8 +99,22 @@ def super_asker(low, high):
     Combine what you learnt from stubborn_asker and not_number_rejector
     to make a function that does it all!
     """
-    return None
+    while True:
+        number = int(input("Pick a number between 1 and 100:".format(low, high)))
+        try:
+            number = int(number)
+            if low <= number <= high:
+                return number
+            else:
+                print("That's not between 1 and 100 silly! 😆")
+        except ValueError:
+            print("Hey! That's not a number!🤬")
 
+    low = 1
+    high = 50
+    result = super_asker(low, high)
+    print(result + " is a great number!")
+    
 
 if __name__ == "__main__":
     # this section does a quick test on your results and prints them nicely.
