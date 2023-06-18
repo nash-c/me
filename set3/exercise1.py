@@ -100,7 +100,7 @@ def super_asker(low, high):
     to make a function that does it all!
     """
     while True:
-        number = int(input("Pick a number between 1 and 100:".format(low, high)))
+        number = input("Pick a number between 1 and 100: ".format(low, high))
         try:
             number = int(number)
             if low <= number <= high:
@@ -110,10 +110,10 @@ def super_asker(low, high):
         except ValueError:
             print("Hey! That's not a number!🤬")
 
-    low = 1
-    high = 50
-    result = super_asker(low, high)
-    print(result + " is a great number!")
+low = 1
+high = 100
+chosen_number = super_asker(low, high)
+print("You chose:", chosen_number)
     
 
 if __name__ == "__main__":
