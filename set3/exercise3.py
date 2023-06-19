@@ -43,16 +43,22 @@ def advancedGuessingGame():
     guessed = False
 
     while not guessed:
-        guessedNumber = int(input("Guess a number: "))
-        print(f"You guessed {guessedNumber},")
+        guessedNumber = input("Guess a number: ")
+        try:
+            guessedNumber = int(guessedNumber)
+            return guessedNumber
+        except ValueError:
+            print("Hey! That's not a number!🤬")
+        
+        print("You guessed {guessedNumber},")
         if guessedNumber == actualNumber:
-            print(f"You got it!! It was {actualNumber}")
+            print("OMG! You got it!")
             guessed = True
         elif guessedNumber < actualNumber:
-            print("Too small, try again :'(")
+            print("Uh oh ... that's too small :'(")
         else:
-            print("Too big, try again :'(")
-    return "You got it!"
+            print("Oh no! That's too big!")
+        return "You got it!"
 
 if __name__ == "__main__":
     print(advancedGuessingGame())
