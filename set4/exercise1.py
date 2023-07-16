@@ -37,10 +37,19 @@ def get_some_details():
          dictionary, you'll need integer indeces for lists, and named keys for
          dictionaries.
     """
+
     json_data = open(LOCAL + "/lazyduck.json").read()
 
     data = json.loads(json_data)
-    return {"lastName": None, "password": None, "postcodePlusID": None}
+    results = data["results"][0]
+
+    last_name = results["name"]["last"]
+    password = results["login"]["password"]
+    postcode = int(results["location"]["postcode"])
+    id_value = int(results["id"]["value"])
+    post_plus_id = postcode + id_value
+
+    return {"lastName": last_name, "password": password, "postcodePlusID": post_plus_id}
 
 
 def wordy_pyramid():
@@ -78,6 +87,17 @@ def wordy_pyramid():
     TIP: to add an argument to a URL, use: ?argName=argVal e.g. &wordlength=
     """
     pyramid = []
+    for length in range(3, 21, 2):
+        url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}"
+        response = requests.get(url)
+        word = response.text.strip()
+        pyramid.append(word)
+
+    for length in range(20, 3, -2):
+        url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}"
+        response = requests.get(url)
+        word = response.text.strip()
+        pyramid.append(word)
 
     return pyramid
 
@@ -96,13 +116,26 @@ def pokedex(low=1, high=5):
          get very long. If you are accessing a thing often, assign it to a
          variable and then future access will be easier.
     """
-    id = 5
-    url = f"https://pokeapi.co/api/v2/pokemon/{id}"
-    r = requests.get(url)
-    if r.status_code is 200:
-        the_json = json.loads(r.text)
 
-    return {"name": None, "weight": None, "height": None}
+    tall_height = 0
+    tall_poke = {}
+
+    for id in range(low, high+1):
+        url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+        response = requests.get(url)
+
+        if response.status_code == 200:
+            the_json = json.loads(response.text)
+            name = the_json["name"]
+            height = the_json["height"]
+            weight = the_json["weight"]
+
+            if height > tall_height:
+                tall_height = height
+                tall_poke = {"name": name, "weight": weight, "height": height}
+
+    return tall_poke
+
 
 
 def diarist():
@@ -124,24 +157,26 @@ def diarist():
     """
     pass
 
-
 if __name__ == "__main__":
-    print(get_some_details())
+    details = get_some_details()
+    print(details)
 
     wp = wordy_pyramid()
-    [print(f"{word} {len(word)}") for word in wp]
+    for word in wp:
+        print(f"{word} {len(word)}")
 
-    print(pokedex(low=3, high=7))
+    pokedex_result = pokedex(low=3, high=7)
+    print(pokedex_result)
 
     diarist()
 
     in_root = os.path.isfile("lasers.pew")
     in_set4 = os.path.isfile("set4/lasers.pew")
+
     if not in_set4 and not in_root:
         print("diarist did not create lasers.pew")
     elif not in_set4 and in_root:
-        print(
-            "diarist did create lasers.pew, but in the me folder, it should be in the set4 folder"
-        )
+        print("diarist did create lasers.pew, but in the me folder, it should be in the set4 folder")
     elif in_set4:
         print("lasers.pew is in the right place")
+
