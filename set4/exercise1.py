@@ -179,4 +179,3 @@ if __name__ == "__main__":
         print("diarist did create lasers.pew, but in the me folder, it should be in the set4 folder")
     elif in_set4:
         print("lasers.pew is in the right place")
-
