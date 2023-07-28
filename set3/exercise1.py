@@ -68,11 +68,6 @@ def stubborn_asker(low, high):
         else:
             print("That's not between 1 and 100 silly! 😆")
 
-    low = 1
-    high = 100
-    result = stubborn_asker(low, high)
-    print("Your chosen number is ..." + result)
-
 
 def not_number_rejector(message):
     """Ask for a number repeatedly until actually given one.
@@ -88,9 +83,6 @@ def not_number_rejector(message):
             return response
         except ValueError:
             print("Hey! That's not a number!🤬")
-
-    result = not_number_rejector(message)
-    print("Your favorite number is ..." + result + " That's so fun!")
 
 
 def super_asker(low, high):
@@ -109,11 +101,6 @@ def super_asker(low, high):
                 print("That's not between 1 and 100 silly! 😆")
         except ValueError:
             print("Hey! That's not a number!🤬")
-
-low = 1
-high = 100
-chosen_number = super_asker(low, high)
-print("You chose:", chosen_number)
     
 
 if __name__ == "__main__":
