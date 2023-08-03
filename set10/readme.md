@@ -1,1 +1,2 @@
 TODO: Reflect on what you learned this week and what is still unclear.
+Started actually making my code nice and neat for presentation purposes, also changed the scale of the Station plots to make them a bit clearer visually.

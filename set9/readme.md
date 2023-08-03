@@ -1,1 +1,2 @@
 TODO: Reflect on what you learned this week and what is still unclear.
+Actually, started plotting the train stations across NSW and Sydney! Had to do a bit of troubleshooting, but it looks good overall
