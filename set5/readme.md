@@ -1,1 +1,2 @@
 TODO: Reflect on what you learned this week and what is still unclear.
+Continued working on data project, fixed up the excel spreadsheet so the first column wasn't locked. Started redoing the code in the og data_introduction file to see what info i can get from the spreadsheet
